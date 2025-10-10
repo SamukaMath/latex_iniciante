@@ -16,7 +16,7 @@
 *.fls
 
 # Saídas (não versionar PDFs compilados)
-*.pdf
+
 
 # Diretórios do editor
 .vscode/
