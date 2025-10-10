@@ -2,7 +2,7 @@ name: Compilar e publicar PDF do LaTeX
 
 on:
   push:          # roda automaticamente quando você envia ou altera arquivos
-    branches: [ "INTRODUÇÃO _AO_LATEX" ]
+    branches: [ "INTRODUÇÃO_AO_LATEX" ]
   pull_request:
   workflow_dispatch:
 
