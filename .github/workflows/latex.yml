@@ -2,7 +2,7 @@ name: Compilar e publicar PDF do LaTeX
 
 on:
   push:          # roda automaticamente quando você envia ou altera arquivos
-    branches: [ "INTRODUÇÃO_AO_LATEX" ]
+    branches: [ "main" ]
   pull_request:
   workflow_dispatch:
 
@@ -22,11 +22,11 @@ jobs:
 
       - name: 🏗️ Compilar o documento
         run: |
-          pdflatex -interaction=nonstopmode -shell-escape INTRODUÇÃO_AO_LATEX.tex
-          pdflatex -interaction=nonstopmode -shell-escape INTRODUÇÃO_AO_LATEX.tex
+          pdflatex -interaction=nonstopmode -shell-escape main.tex
+          pdflatex -interaction=nonstopmode -shell-escape main.tex
 
       - name: 🧩 Renomear o PDF final
-        run: mv INTRODUÇÃO_AO_LATEX.pdf latex_iniciante.pdf
+        run: mv main.pdf latex_iniciante.pdf
 
       - name: 📤 Fazer commit automático do PDF
         run: |
