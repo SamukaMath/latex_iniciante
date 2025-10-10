@@ -1,0 +1,1061 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, enumitem, float, booktabs, multicol}
+\usepackage{newtxtext, newtxmath}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry, chngpage}
+
+\usepackage{titling}
+
+\geometry{left=3cm,right=2cm,top=3cm,bottom=2cm}
+
+\setlength{\parskip}{0.25cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\LaTeX: Guia do Principiante}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{Curso Introdutório}
+
+\pretitle{%
+	\begin{center}
+		\vspace*{0.35\textheight} 
+		\Huge\bfseries\color{blue}
+	}
+	\posttitle{\par\end{center}\vskip 1em}
+
+\preauthor{\begin{center}\Large}
+	\postauthor{\end{center}}
+
+\predate{\begin{center}\large}
+	\postdate{\end{center}}
+
+\title{\LaTeX: Guia do Principiante}
+\author{Prof. Esp. Samuel de Sousa Apolinário}
+\date{Outubro de 2025}
+
+\newcommand{\paginaautor}{
+	\newpage
+	\thispagestyle{empty}
+	\begin{flushright}
+		
+		{\Large \textbf{Autor}}\\[1cm]
+		\textbf{Samuel de Sousa Apolinário}\\[0.3cm]
+		Licenciado em Matemática - UNEAL\\
+		Especialista em Estatística Aplicada - FFOCUS\\[0.5cm]
+		Contato: samukamath@outlook.com
+	\end{flushright}
+	\newpage
+}
+
+\begin{document}
+	
+	\maketitle
+	\thispagestyle{empty}
+	
+	\newpage
+	
+	\input{folha_de_rosto}
+	\thispagestyle{empty}
+	
+	\newpage
+	
+	\paginaautor
+	
+	
+	\tableofcontents
+	\thispagestyle{empty}
+	
+	\newpage
+	
+	\input{prefacio}
+	\thispagestyle{empty}
+	
+	\newpage
+	
+	% =============================
+	\section{Qual a finalidade do LaTeX?}
+	O LaTeX é uma ferramenta para formatação e elaboração de documentos voltada à criação de textos científicos, técnicos e acadêmicos com excelente qualidade tipográfica. É amplamente empregado em campos como Matemática, Engenharia, Física, Computação e demais áreas das Ciências.
+	
+	
+	\textbf{Características principais:}
+	\begin{itemize}
+		\item \textbf{Qualidade tipográfica excepcional}
+		
+		O LaTeX produz textos com uma diagramação impecável, especialmente para fórmulas matemáticas, tabelas e citações. O resultado final parece de editora profissional;
+		
+		\item \textbf{Separação entre conteúdo e formatação}
+		
+		Você escreve o conteúdo (texto, equações, figuras) e o LaTeX cuida automaticamente da aparência. Isso evita perda de tempo com ajustes manuais de layout;
+		
+		\item \textbf{Excelente suporte a matemática}
+		
+		Nenhum editor de texto comum chega perto do poder do LaTeX para expressões matemáticas — ele foi literalmente criado com isso em mente.
+		
+		\item \textbf{Ideal para textos científicos e acadêmicos}
+		
+		Ele organiza referências, citações, índices, sumários e bibliografias automaticamente.
+		Pacotes como \textbf{biblatex} ou \textbf{abntex2} (no Brasil) facilitam a vida acadêmica.
+		
+		\item Base em código
+		
+		Tudo é feito por comandos de texto, o que dá controle total sobre o documento e facilita versionamento com Git (ótimo pra quem trabalha em equipe).
+		
+		\item \textbf{Altamente personalizável}
+		
+		Existem milhares de pacotes (extensões) pra quase tudo: gráficos, tabelas, diagramas, apresentações (como o Beamer) e até currículos.
+		
+		\item \textbf{Compatibilidade e portabilidade}
+		
+		Os arquivos .tex são leves e funcionam em qualquer sistema operacional. O resultado final é geralmente um PDF padronizado.
+		
+		\item \textbf{Estabilidade e precisão}
+		
+		Mesmo documentos enormes (como teses ou livros) mantêm consistência no estilo e numeração automática impecável — sem os “bugs” comuns de editores WYSIWYG.
+	
+	\end{itemize}
+	
+	% =============================
+	\section{Instalação do LaTeX}
+	
+	\subsection{Opção 1: Usar o Overleaf (online)}
+	A forma mais simples para começar é usando o site:
+	\url{https://www.overleaf.com}
+	
+	Não precisa instalar nada. Basta criar uma conta e começar um novo projeto.
+	
+	\subsection{Opção 2: Instalação local}
+	Instale um compilador LaTeX e um editor:
+	
+	\begin{itemize}
+		\item Windows: instalar o \textbf{MiKTeX} + \textbf{TeXstudio};
+		\item Linux: instalar o pacote \textbf{texlive-full} + \textbf{TeXstudio};
+		\item MacOS: instalar o \textbf{MacTeX}.
+	\end{itemize}
+	
+	% =============================
+	\section{Primeiro Documento em LaTeX}
+	
+	Vamos escrever nosso primeiro código:
+	
+	\begin{verbatim}
+		\documentclass{article}
+		\begin{document}
+			Olá, mundo!
+		\end{document}
+	\end{verbatim}
+	
+	\textbf{Explicação:}
+	
+	\begin{itemize}
+		\item \verb|\documentclass{article}|: esta linha especifica o tipo de documento que estamos produzindo. No caso, escolhemos “article”, que é indicado para textos curtos, relatórios ou artigos acadêmicos.
+		
+		\item \verb|\begin{document}| e \verb|\end{document}|: tudo o que estiver entre essas instruções será considerado conteúdo do documento, ou seja, o que aparecerá no PDF final.
+	\end{itemize}
+	
+	\textbf{Como funciona}:
+	
+	Quando você compilar este código, o \LaTeX\, processará as instruções e gerará um arquivo PDF contendo apenas a frase “Olá, mundo!”. Essa é a forma mais básica de testar se o ambiente está funcionando corretamente e de entender a estrutura mínima de um documento \LaTeX.
+	
+	Observações importantes:
+	
+	\begin{itemize}
+		
+		\item Todo documento em \LaTeX precisa ter uma classe definida (\verb|\documentclass|), que indica o formato e estilo geral do arquivo.
+		
+		\item O conteúdo visível sempre deve estar entre \verb|\begin{document}| e \verb|\end{document}|. Qualquer texto colocado fora dessas linhas não aparecerá no documento final.
+		
+		\item Esse exemplo é chamado de documento mínimo ou exemplo inicial, útil para compreender a organização básica de um arquivo \LaTeX antes de adicionar elementos mais complexos, como títulos, listas ou imagens.
+		
+	\end{itemize}
+	
+	Dica: experimente alterar o texto “Olá, mundo!” para ver como o \LaTeX reproduz o conteúdo que você escreve, mantendo a formatação automática do documento.
+	% =============================
+	\section{Formatando Textos}
+	
+	O \LaTeX{} oferece diversos recursos para formatar textos, permitindo destacar informações importantes e organizar melhor o conteúdo do documento. A seguir, veremos alguns dos comandos mais usados na formatação básica:
+	
+	\begin{itemize}
+		\item \textbf{Negrito:} utilizado para dar ênfase a palavras ou expressões importantes. O comando é feito com \verb|\textbf{texto}| e o resultado é \textbf{texto em negrito}.
+		\item \textit{Itálico:} serve para destacar termos estrangeiros, títulos de obras ou dar ênfase leve. Use \verb|\textit{texto}| e o resultado é \textit{texto em itálico}.
+		\item \underline{Sublinhado:} pode ser aplicado com \verb|\underline{texto}|, gerando um \underline{texto sublinhado}. No entanto, é recomendado usar com moderação, já que o sublinhado é menos comum em textos acadêmicos.
+	\end{itemize}
+	
+	Além dessas opções, o \LaTeX{} permite controlar a estrutura dos parágrafos e a quebra de linhas de forma simples:
+	
+	\begin{itemize}
+		\item Para pular linhas dentro de um mesmo parágrafo, utilize o comando \verb|\\|.  
+		\textbf{Exemplo:}  
+		\verb|Primeira linha.\\Segunda linha.| produz:  
+		Primeira linha.\\Segunda linha.
+		\item Para iniciar um novo parágrafo, basta deixar uma linha em branco no código. O \LaTeX{} automaticamente adiciona o espaçamento adequado entre parágrafos.
+	\end{itemize}
+	
+	
+	
+	É importante lembrar que o \LaTeX{} foi projetado para cuidar automaticamente da formatação do texto, garantindo uma apresentação limpa e uniforme. Por isso, é sempre bom evitar o uso excessivo de comandos de estilo e deixar que o sistema organize o layout do documento.
+	\\ 
+	
+	Também é possível combinar estilos, como \verb|\textbf{\textit{texto}}|, para criar um \textbf{\textit{texto em negrito e itálico}}. Essa combinação é útil quando se deseja dar destaque ainda maior a um termo específico.
+	
+	\subsection{Tamanho da fonte}
+	
+	O \LaTeX{} permite ajustar o tamanho das letras de forma rápida e padronizada, utilizando comandos específicos que alteram a formatação apenas do trecho desejado. Essa flexibilidade é útil para destacar títulos, legendas, citações, notas de rodapé e outros elementos do texto.
+	
+	\begin{itemize}
+		\item \verb|\tiny| — 5pt
+		\item \verb|\scriptsize| — 7pt
+		\item \verb|\footnotesize| — 8pt
+		\item \verb|\small| — 9pt
+		\item \verb|\normalsize| — 10pt (tamanho padrão)
+		\item \verb|\large| — 12pt
+		\item \verb|\Large| — 14.4pt
+		\item \verb|\LARGE| — 17.28pt
+		\item \verb|\huge| — 20.74pt
+		\item \verb|\Huge| — 24.88pt
+	\end{itemize}
+	
+	Esses comandos podem ser aplicados a qualquer parte do texto. Por exemplo:
+	
+	\begin{verbatim}
+		{\large Este texto está um pouco maior.}
+		
+		{\Huge Este texto está bem grande!}
+	\end{verbatim}
+	
+	O resultado será:
+	
+	{\large Este texto está um pouco maior.}
+	
+	{\Huge Este texto está bem grande!}
+	
+	\bigskip
+	Note que as chaves \verb|{ }| delimitam o trecho do texto que será afetado. Assim, o tamanho da fonte volta ao normal após o fechamento das chaves.  
+	Se você quiser alterar o tamanho de uma seção inteira, pode colocar o comando antes do texto, sem chaves, por exemplo:
+	
+	\begin{verbatim}
+		\huge
+		Este parágrafo inteiro ficará em tamanho grande até
+		que outro comando de tamanho seja usado.
+	\end{verbatim}
+	
+	\bigskip
+	\textbf{Dica:} é uma boa prática usar variações de tamanho com moderação — apenas para destacar partes importantes, como títulos, seções ou observações especiais. O excesso pode deixar o texto visualmente cansativo.
+	
+	\bigskip
+	Também é possível definir o tamanho base do documento ao criar o arquivo \LaTeX{}, adicionando um parâmetro à classe do documento. Por exemplo:
+	
+	\begin{verbatim}
+		\documentclass[12pt]{article}
+	\end{verbatim}
+	
+	Nesse caso, o tamanho padrão (\verb|\normalsize|) será 12 pontos, e os demais tamanhos serão ajustados proporcionalmente.  
+	Esse recurso é bastante útil para atender a exigências de formatação de universidades, revistas científicas ou editais específicos.
+	
+	\bigskip
+	\textbf{Resumo:}  
+	Os tamanhos de fonte no \LaTeX{} seguem uma hierarquia lógica — do menor para o maior — e garantem uma aparência harmônica em todo o documento, mantendo o padrão tipográfico profissional característico do sistema.
+	
+	% =============================
+	\section{Listas}
+	
+	O \LaTeX{} permite criar diferentes tipos de listas para organizar informações de forma clara e estruturada. As listas são recursos muito úteis em textos acadêmicos, relatórios e materiais didáticos, pois ajudam na leitura e na hierarquização de ideias.
+	
+	\subsection{Lista não numerada}
+	
+	As listas não numeradas são usadas quando a ordem dos itens não é relevante. São criadas com o ambiente \verb|itemize|. Veja o exemplo:
+	
+	\begin{figure}[H]
+		\begin{minipage}{.45\linewidth}
+			\begin{verbatim}
+				\begin{itemize}
+					\item Primeiro item
+					\item Segundo item
+					\item Terceiro item
+				\end{itemize}
+			\end{verbatim}
+		\end{minipage}
+		\begin{minipage}{.45\linewidth}
+			O resultado será exibido assim:
+			
+			\begin{itemize}
+				\item Primeiro item
+				\item Segundo item
+				\item Terceiro item
+			\end{itemize}
+			
+		\end{minipage}
+	\end{figure}
+	
+	Por padrão, o \LaTeX{} utiliza marcadores simples (como bolinhas) antes de cada item. É possível criar listas aninhadas, ou seja, uma lista dentro de outra, para mostrar subitens relacionados. Exemplo:
+	
+	\begin{figure}[H]
+		\begin{minipage}{.45\linewidth}
+			
+			\begin{verbatim}
+				\begin{itemize}
+					\item Frutas
+					\begin{itemize}
+						\item Maçã
+						\item Banana
+						\item Laranja
+					\end{itemize}
+					\item Verduras
+					\item Legumes
+				\end{itemize}
+			\end{verbatim}
+		\end{minipage}
+		\begin{minipage}{.45\linewidth}
+			Que será exibido assim:
+			
+			\begin{itemize}
+				\item Frutas
+				\begin{itemize}
+					\item Maçã
+					\item Banana
+					\item Laranja
+				\end{itemize}
+				\item Verduras
+				\item Legumes
+			\end{itemize}
+		\end{minipage}
+	\end{figure}
+	
+	Esse tipo de estrutura facilita a organização de informações em tópicos e sub-tópicos, tornando o texto mais visual e compreensível.
+	
+	Também é possível personalizar os símbolos das listas com o pacote \verb|enumitem|, por exemplo:
+	\begin{verbatim}
+		\usepackage{enumitem}
+		
+		\begin{itemize}[label=--]
+			\item Item com traço
+			\item Outro item
+		\end{itemize}
+	\end{verbatim}
+	
+	Isso substitui as bolinhas por traços, o que pode deixar o visual mais limpo em apresentações ou relatórios.
+	
+	\bigskip
+	Outros tipos de listas incluem:
+	\begin{itemize}
+		\item \textbf{Listas numeradas} – criadas com o ambiente \verb|enumerate|, usadas quando a sequência dos itens importa;
+		\item \textbf{Listas de descrição} – feitas com o ambiente \verb|description|, ideais para definir termos ou conceitos.
+	\end{itemize}
+	
+	\subsection{Lista numerada}
+	
+	As listas numeradas são ideais quando a ordem dos itens tem importância, como em etapas de um procedimento, instruções ou classificações. No \LaTeX{}, elas são criadas com o ambiente \verb|enumerate|. Veja o exemplo básico:
+	
+	\begin{figure}[H]
+		\begin{minipage}{.45\linewidth}
+			\begin{verbatim}
+				\begin{enumerate}
+					\item Primeiro
+					\item Segundo
+					\item Terceiro
+				\end{enumerate}
+			\end{verbatim}
+		\end{minipage}
+		\begin{minipage}{.45\linewidth}
+			O resultado será exibido assim:
+			
+			\begin{enumerate}
+				\item Primeiro
+				\item Segundo
+				\item Terceiro
+			\end{enumerate}
+		\end{minipage}
+	\end{figure}
+	
+	Cada item é numerado automaticamente pelo \LaTeX{}, o que significa que, mesmo que você adicione ou remova itens, a numeração será ajustada de forma automática — uma das grandes vantagens em relação à digitação manual.
+	
+	Também é possível criar listas numeradas dentro de outras listas (listas aninhadas), permitindo organizar informações hierarquicamente. Veja o exemplo:
+	
+	\begin{figure}[H]
+		\begin{minipage}{.45\linewidth}
+			\begin{verbatim}
+				\begin{enumerate}
+					\item Etapa 1
+					\begin{enumerate}
+						\item Subetapa 1.1
+						\item Subetapa 1.2
+					\end{enumerate}
+					\item Etapa 2
+				\end{enumerate}
+			\end{verbatim}
+		\end{minipage}
+		\begin{minipage}{.45\linewidth}
+			E o resultado será:
+			
+			\begin{enumerate}
+				\item Etapa 1
+				\begin{enumerate}
+					\item Subetapa 1.1
+					\item Subetapa 1.2
+				\end{enumerate}
+				\item Etapa 2
+			\end{enumerate}
+		\end{minipage}
+	\end{figure}
+	
+	Por padrão, o \LaTeX{} usa números arábicos (1, 2, 3, ...), mas é possível personalizar o formato da numeração com o pacote \verb|enumitem|. Por exemplo:
+	
+	\begin{verbatim}
+		\usepackage{enumitem}
+		
+		\begin{enumerate}[label=\alph*)]
+			\item Primeira opção
+			\item Segunda opção
+		\end{enumerate}
+	\end{verbatim}
+	
+	Esse comando faz com que os itens sejam listados com letras minúsculas seguidas de parêntese, resultando em:
+	\begin{enumerate}[label=\alph*)]
+		\item Primeira opção
+		\item Segunda opção
+	\end{enumerate}
+	
+	Outros formatos possíveis incluem:
+	\begin{itemize}
+		\item \verb|label=\roman*)| → numeração com algarismos romanos minúsculos (i, ii, iii, ...);
+		\item \verb|label=\Roman*)| → algarismos romanos maiúsculos (I, II, III, ...);
+		\item \verb|label=\Alph*)| → letras maiúsculas (A, B, C, ...).
+	\end{itemize}
+	
+	Essas personalizações permitem ajustar o estilo das listas conforme o tipo de documento, mantendo a formatação elegante e consistente.
+	
+	% =============================
+	\section{Inserindo Títulos e Sumário}
+	
+	O \LaTeX{} facilita muito a criação automática de títulos, autores, datas e até sumários, sem a necessidade de formatação manual. Esses recursos são especialmente úteis em trabalhos acadêmicos, relatórios e livros, pois mantêm a padronização e permitem atualizações automáticas sempre que o conteúdo é alterado.
+	
+	\begin{verbatim}
+		\title{Meu Documento}
+		\author{Nome do Autor}
+		\date{Data}
+		\maketitle
+		\tableofcontents
+		\section{Introdução}
+	\end{verbatim}
+	
+	Esses comandos geram automaticamente uma \textbf{capa simples} e um \textbf{sumário}. A seguir, entenda o papel de cada um:
+	
+	\begin{itemize}
+		\item \verb|\title{...}| define o título principal do documento. O texto colocado entre as chaves será exibido em destaque no topo da capa.
+		\item \verb|\author{...}| define o(s) nome(s) do(s) autor(es) do trabalho. É possível incluir mais de um autor separando-os com barras verticais (\verb|\and|).
+		\item \verb|\date{...}| insere a data. Você pode digitar uma data específica, como \verb|\date{Outubro de 2025}|, ou deixar o campo vazio \verb|\date{}| para omitir a data. Se desejar inserir a data atual automaticamente, use \verb|\date{\today}|.
+		\item \verb|\maketitle| gera a página de título com as informações fornecidas acima.
+		\item \verb|\tableofcontents| cria automaticamente o \textbf{sumário}, com base nos títulos e subtítulos definidos com \verb|\section|, \verb|\subsection|, etc.
+	\end{itemize}
+	
+	Por exemplo, o código:
+	
+	\begin{verbatim}
+		\documentclass{article}
+		\title{Relatório de Experimentos}
+		\author{Maria Silva e João Pereira}
+		\date{\today}
+		
+		\begin{document}
+			\maketitle
+			\tableofcontents
+			
+			\section{Introdução}
+			\section{Metodologia}
+			\section{Resultados}
+			\section{Conclusão}
+		\end{document}
+	\end{verbatim}
+	
+	gera um documento com capa, data atual automática e um sumário estruturado que se atualiza conforme você adiciona ou remove seções.
+	
+	\bigskip
+	\textbf{Dica:} se o sumário não estiver aparecendo atualizado, compile o documento duas vezes. O \LaTeX{} precisa de uma segunda execução para gerar corretamente o índice, já que ele é montado a partir das informações coletadas durante a primeira compilação.
+	
+	\bigskip
+	Você também pode personalizar o título e o sumário com pacotes adicionais, como:
+	\begin{itemize}
+		\item \verb|titlesec| — permite mudar o estilo e o espaçamento dos títulos;
+		\item \verb|tocloft| — possibilita modificar a aparência do sumário (margens, fonte, espaçamento, etc.).
+	\end{itemize}
+
+	
+	% =============================
+	\section{Equações Matemáticas}
+	
+	O \LaTeX{} é amplamente reconhecido por sua capacidade de escrever expressões matemáticas com alta qualidade tipográfica. Ele utiliza um modo especial de escrita chamado \textbf{modo matemático}, que permite representar símbolos, frações, expoentes, raízes, somatórios, integrais e muito mais.
+	
+	Existem basicamente duas formas principais de inserir equações: o \textbf{modo inline} e o \textbf{modo centralizado}. Além disso, é possível criar sistemas de equações e expressões alinhadas.
+	
+	\subsection{Modo inline}
+	
+	O modo \textit{inline} é usado quando a equação aparece no meio de um parágrafo, acompanhando o texto normalmente.  
+	Por exemplo:
+	
+	\begin{verbatim}
+		A equação é $E = mc^2$.
+	\end{verbatim}
+	
+	O resultado será:  
+	A equação é $E = mc^2$.
+	
+	Note que a equação é inserida entre os símbolos de cifrão (\verb|$...$|). Essa é a forma mais simples e comum de escrever expressões curtas, como $a^2 + b^2 = c^2$ ou $\pi \approx 3.14$.
+	
+	\bigskip
+	\textbf{Dica:} use o modo inline apenas para fórmulas pequenas. Fórmulas longas ou que precisem de destaque devem ser centralizadas.
+	
+	\subsection{Modo centralizado}
+	
+	Quando a expressão matemática é o foco da explicação, o ideal é centralizá-la no documento. Para isso, usamos o ambiente delimitado por \verb|\[| e \verb|\]|:
+	
+	\begin{verbatim}
+		\[
+		x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+		\]
+	\end{verbatim}
+	
+	O resultado será:
+	
+	\[
+	x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+	\]
+	
+	Esse formato é ideal para equações destacadas, demonstrações ou passos importantes de um cálculo.
+	
+	\bigskip
+	Também é possível numerar as equações automaticamente utilizando o ambiente \verb|equation|:
+	
+	\begin{verbatim}
+		\begin{equation}
+			E = mc^2
+		\end{equation}
+	\end{verbatim}
+	
+	O resultado será:
+	
+	\begin{equation}
+		E = mc^2
+	\end{equation}
+	
+	O número gerado pode ser usado para referência cruzada no texto com o comando \verb|\label| e \verb|\ref|, por exemplo:
+	\begin{verbatim}
+		\begin{equation}\label{eq:energia}
+			E = mc^2
+		\end{equation}
+		A equação \ref{eq:energia} mostra a equivalência entre massa e energia.
+	\end{verbatim}
+	
+	\subsection{Sistema de equações}
+	
+	Para representar um conjunto de equações relacionadas, podemos usar o ambiente \verb|cases|, dentro do modo matemático centralizado.  
+	Exemplo:
+	
+	\begin{verbatim}
+		\[
+		\begin{cases}
+			x + y = 10 \\
+			2x - y = 3
+		\end{cases}
+		\]
+	\end{verbatim}
+	
+	O resultado será:
+	
+	\[
+	\begin{cases}
+		x + y = 10 \\
+		2x - y = 3
+	\end{cases}
+	\]
+	
+	Esse tipo de estrutura é especialmente útil para representar sistemas lineares, condições por partes e definições de funções.
+	
+	\bigskip
+	\textbf{Dica extra:} para equações mais elaboradas, com alinhamentos e múltiplas linhas, o pacote \verb|amsmath| oferece ambientes como:
+	\begin{itemize}
+		\item \verb|align| — alinha várias equações pelo sinal de igualdade;
+		\item \verb|gather| — centraliza várias equações sem alinhamento específico;
+		\item \verb|split| — divide uma equação longa em várias linhas.
+	\end{itemize}
+	
+	Esses ambientes deixam o texto matemático mais organizado e legível, além de garantirem formatação profissional.
+	
+	
+	% =============================
+	\section{Inserindo Imagens}
+	
+	O \LaTeX{} permite inserir imagens de maneira simples e profissional, garantindo que elas fiquem bem posicionadas e integradas ao texto. Para isso, utilizamos o pacote \verb|graphicx|, que oferece o comando \verb|\includegraphics| e diversas opções de personalização.
+	
+	Antes de tudo, é necessário carregar o pacote no início do documento, dentro do preâmbulo:
+	
+	\begin{verbatim}
+		\usepackage{graphicx}
+	\end{verbatim}
+	
+	Depois disso, podemos inserir uma imagem utilizando o ambiente \verb|figure|, como no exemplo abaixo:
+	
+	\begin{verbatim}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.5\textwidth]{exemplo.jpg}
+			\caption{Minha imagem}
+		\end{figure}
+	\end{verbatim}
+	
+	Esse código gera uma figura centralizada, com legenda e tamanho ajustado proporcionalmente à largura do texto.
+	
+	\bigskip
+	\textbf{Explicação dos comandos:}
+	
+	\begin{itemize}
+		\item \verb|\begin{figure}[h]| — inicia o ambiente de figura.  
+			O argumento opcional \verb|[h]| sugere ao \LaTeX{} que a imagem seja posicionada “aqui” (*here*), próximo ao local onde foi inserida no código.  
+			Outras opções possíveis são:
+			\begin{itemize}
+				\item \verb|t| – posiciona a imagem no topo da página (*top*);
+				\item \verb|b| – posiciona no rodapé da página (*bottom*);
+				\item \verb|p| – coloca a figura em uma página exclusiva para imagens (*page*);
+				\item \verb|!| – força o \LaTeX{} a tentar obedecer o local indicado.
+			\end{itemize}
+			
+			\item \verb|\centering| — centraliza a imagem dentro do ambiente.
+			
+			\item \verb|\includegraphics[width=0.5\textwidth]{exemplo.jpg}| — insere a imagem “exemplo.jpg” ajustada a 50\% da largura do texto.  
+			Você também pode usar:
+			\begin{itemize}
+				\item \verb|width| — define a largura (ex.: \verb|width=8cm|);
+				\item \verb|height| — define a altura (ex.: \verb|height=4cm|);
+				\item \verb|scale| — redimensiona proporcionalmente (ex.: \verb|scale=0.8|).
+			\end{itemize}
+			
+			\item \verb|\caption{Minha imagem}| — adiciona uma legenda abaixo da figura. O \LaTeX{} numera automaticamente as figuras conforme a ordem em que aparecem.
+			
+			\item \verb|\end{figure}| — finaliza o ambiente da figura.
+	\end{itemize}
+	
+	\bigskip
+	\textbf{Exemplo completo:}
+	
+	\begin{verbatim}
+		\documentclass{article}
+		\usepackage{graphicx}
+		\begin{document}
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=0.6\textwidth]{paisagem.png}
+				\caption{Vista panorâmica da montanha}
+				\label{fig:montanha}
+			\end{figure}
+			
+			A Figura~\ref{fig:montanha} mostra uma bela vista das montanhas 
+			durante o amanhecer.
+		\end{document}
+	\end{verbatim}
+	
+	\bigskip
+	\textbf{Dicas importantes:}
+	\begin{itemize}
+		\item As imagens devem estar na mesma pasta do arquivo \verb|.tex| ou em um diretório especificado (ex.: \verb|\includegraphics{imagens/exemplo.jpg}|).
+		\item É recomendável usar formatos como \texttt{.png}, \texttt{.jpg} ou \texttt{.pdf} (este último é ideal para gráficos vetoriais).
+		\item Você pode combinar legendas e rótulos para fazer referência cruzada a figuras no texto.
+		\item Para colocar duas imagens lado a lado, utilize o pacote \verb|subfigure| ou \verb|subcaption|.
+	\end{itemize}
+	
+	Essas opções tornam a inserção de imagens no \LaTeX{} muito flexível, mantendo sempre o padrão de qualidade tipográfica que é a marca registrada do sistema.
+
+	% =============================
+	\section{Tabelas Simples}
+	
+	O \LaTeX{} também permite criar tabelas de maneira estruturada e precisa, garantindo alinhamento perfeito e aparência profissional.  
+	O ambiente básico usado para isso é o \verb|tabular|, que define as colunas e o conteúdo de cada célula da tabela.
+	
+	\begin{verbatim}
+		\begin{tabular}{|c|c|}
+			\hline
+			Nome & Nota \\
+			\hline
+			João & 8,5 \\
+			Ana & 9,0 \\
+			\hline
+		\end{tabular}
+	\end{verbatim}
+	
+	Esse código gera uma tabela simples, com bordas verticais e horizontais, da seguinte forma:
+	
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			Nome & Nota \\
+			\hline
+			João & 8,5 \\
+			Ana & 9,0 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\bigskip
+	\textbf{Explicando cada parte:}
+	
+	\begin{itemize}
+		\item \verb|\begin{tabular}{|\textbar \verb|c| \textbar \verb|c| \textbar \verb|}| — inicia o ambiente da tabela e define o formato das colunas.  
+			O argumento entre chaves indica:
+			\begin{itemize}
+				\item \verb|c| — centraliza o conteúdo da coluna;  
+				\item \verb|l| — alinha o conteúdo à esquerda (*left*);  
+				\item \verb|r| — alinha o conteúdo à direita (*right*);  
+				\item \verb"| |" — adiciona linhas verticais entre as colunas.
+			\end{itemize}
+			
+			\item \verb|\hline| — insere uma linha horizontal acima ou abaixo das células.
+			
+			\item O símbolo \verb|&| separa as colunas dentro de uma linha.
+			
+			\item O comando \verb|\\| indica o fim de uma linha e o início da próxima.
+		\end{itemize}
+		
+		\bigskip
+		\textbf{Exemplo com três colunas:}
+		
+		\begin{verbatim}
+			\begin{tabular}{|l|c|r|}
+				\hline
+				Aluno & Disciplina & Nota \\
+				\hline
+				João & Matemática & 8,5 \\
+				Ana & Português & 9,0 \\
+				Marcos & História & 7,8 \\
+				\hline
+			\end{tabular}
+		\end{verbatim}
+		
+		Resultado:
+		
+		\begin{center}
+			\begin{tabular}{|l|c|r|}
+				\hline
+				Aluno & Disciplina & Nota \\
+				\hline
+				João & Matemática & 8,5 \\
+				Ana & Português & 9,0 \\
+				Marcos & História & 7,8 \\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\bigskip
+		\textbf{Dicas úteis:}
+		\begin{itemize}
+			\item Evite excesso de linhas verticais e horizontais — tabelas muito marcadas visualmente podem ficar poluídas.
+			\item Use o pacote \verb|booktabs| para criar tabelas com estilo mais limpo e elegante (usando comandos como \verb|\toprule|, \verb|\midrule| e \verb|\bottomrule|).
+			\item Para adicionar título e numeração automática à tabela, utilize o ambiente \verb|table| com o comando \verb|\caption|.
+		\end{itemize}
+		
+		\bigskip
+		\textbf{Exemplo com legenda:}
+		
+		\begin{verbatim}
+			\begin{table}[h]
+				\centering
+				\begin{tabular}{|c|c|}
+					\hline
+					Produto & Preço (R\$) \\
+					\hline
+					Caderno & 15,00 \\
+					Caneta & 3,50 \\
+					\hline
+				\end{tabular}
+				\caption{Tabela de preços de materiais escolares}
+			\end{table}
+		\end{verbatim}
+		
+		Esse código cria uma tabela com legenda e numeração automática, permitindo fazer referência cruzada dentro do texto.
+		
+	
+	% =============================
+	\section{Criando um Documento de Prova}
+	
+	O \LaTeX{} é uma excelente ferramenta para criar provas e atividades avaliativas com qualidade visual e organização. Ele permite combinar texto, expressões matemáticas e formatação consistente, o que resulta em documentos elegantes e fáceis de ler — tanto para o professor quanto para o aluno.
+	
+	\bigskip
+	\textbf{Passos iniciais:}
+	
+	\begin{itemize}
+		\item Use a classe de documento padrão para artigos:
+		\begin{verbatim}
+			\documentclass[12pt]{article}
+		\end{verbatim}
+		A opção \verb|12pt| define o tamanho da fonte, deixando o texto mais legível para impressões.  
+		Outros tamanhos possíveis incluem \verb|10pt| e \verb|11pt|.
+		
+		\item Acrescente título, data e um espaço reservado para o nome do aluno:
+		\begin{verbatim}
+			\title{Prova de Matemática}
+			\author{Professor João Silva}
+			\date{Data: \underline{\hspace{3cm}} \\
+				Nome: \underline{\hspace{8cm}}}
+		\end{verbatim}
+		Assim, o título e o campo para o nome do aluno aparecem automaticamente no cabeçalho quando usamos \verb|\maketitle|.
+		
+		\item Utilize comandos matemáticos para escrever as questões com clareza e precisão, aproveitando o modo matemático do \LaTeX{}:
+		\begin{verbatim}
+			1) Calcule o valor de $x$ na equação $2x + 5 = 11$.
+			
+			2) Resolva o sistema:
+			\[
+			\begin{cases}
+				3x + y = 7 \\
+				x - y = 1
+			\end{cases}
+			\]
+		\end{verbatim}
+	\end{itemize}
+	
+	\bigskip
+	\textbf{Exemplo completo de documento:}
+	
+	\begin{verbatim}
+		\documentclass[12pt]{article}
+		\usepackage{amsmath}
+		\usepackage{geometry}
+		\geometry{a4paper, margin=2.5cm}
+		
+		\title{Prova de Matemática - 7º Ano}
+		\author{Professor João Silva}
+		\date{Data: \underline{\hspace{3cm}} \\
+			Nome: \underline{\hspace{8cm}}}
+		
+		\begin{document}
+			\maketitle
+			
+			\section*{Questões}
+			
+			\begin{enumerate}
+				\item Resolva a equação $3x + 7 = 16$.
+				
+				\item Calcule a área de um triângulo de base $b = 8\,cm$ e altura $h = 5\,cm$.
+				
+				\item Resolva o sistema:
+				\[
+				\begin{cases}
+					2x + y = 10 \\
+					x - y = 4
+				\end{cases}
+				\]
+				
+				\item Simplifique a fração $\dfrac{18}{24}$.
+			\end{enumerate}
+			
+		\end{document}
+	\end{verbatim}
+	
+	\bigskip
+	\textbf{Dicas úteis:}
+	\begin{itemize}
+		\item Use o pacote \verb|geometry| para ajustar margens conforme o padrão da escola.
+		\item Adicione \verb|\newpage| para separar seções ou páginas quando a prova for longa.
+		\item O pacote \verb|multicol| permite dividir as questões em colunas, útil para economizar espaço.
+		\item Você pode inserir imagens, gráficos e figuras com \verb|graphicx|, se a prova incluir interpretação visual.
+		\item Para criar linhas de resposta, use comandos como \verb|\underline{\hspace{5cm}}| ou o ambiente \verb|tabular|.
+	\end{itemize}
+	
+	Com essas configurações, é possível gerar avaliações limpas, bem organizadas e de aparência profissional, economizando tempo e mantendo consistência nas futuras provas.
+	
+	
+	% =============================
+	\section{Comandos Úteis}
+	
+	O \LaTeX{} oferece diversos comandos práticos para controlar espaçamentos, quebras de página e outros ajustes finos no layout do documento. Esses comandos são especialmente úteis quando você quer refinar a aparência do texto sem alterar a estrutura geral do conteúdo.
+	
+	\begin{itemize}
+		\item \verb|\newpage| \texttwelveudash\, força uma quebra de página, fazendo com que o conteúdo seguinte comece na próxima página.  
+		Exemplo:
+		\begin{verbatim}
+			Primeira parte do texto.
+			\newpage
+			Segunda parte começa em uma nova página.
+		\end{verbatim}
+		
+		\bigskip
+		
+		\item \verb|\vspace{1cm}| \texttwelveudash\, insere um espaço vertical de 1 cm entre linhas ou parágrafos. Pode ser usado para dar “respiro” em partes específicas do texto.  
+		Exemplo:
+		\begin{verbatim}
+			Texto acima.
+			
+			\vspace{1cm}
+			
+			Texto abaixo.
+		\end{verbatim}
+		
+		Resultado: um espaço vertical de 1 cm entre os dois trechos de texto.
+		
+		\bigskip
+		
+		\item \verb|\hspace{2cm}| \texttwelveudash\, adiciona um espaço horizontal de 2 cm na mesma linha.  
+		Esse comando é útil, por exemplo, para criar deslocamentos, alinhar trechos manualmente ou separar elementos no mesmo parágrafo.  
+		Exemplo:
+		\begin{verbatim}
+			Nome:\hspace{2cm}Assinatura:
+		\end{verbatim}
+		
+		Resultado: entre \textquotedblleft Nome:\textquotedblright\, e \textquotedblleft Assinatura:\textquotedblright\, haverá um espaço de 2 cm.
+		
+		\bigskip
+		
+		\item \verb|~| \texttwelveudash\, cria um espaço \textbf{rígido} entre palavras, impedindo que o \LaTeX{} quebre a linha nesse ponto.  
+		É muito usado em situações como abreviações seguidas de nomes, números e unidades de medida.  
+		Exemplo:
+		\begin{verbatim}
+			Prof.~Silva publicou o artigo em 2025.
+		\end{verbatim}
+		
+		Resultado: o \textquotedblleft Prof.\textquotedblright \, e o \textquotedblleft Silva\textquotedblright\, permanecem juntos, sem quebra de linha entre eles.
+	\end{itemize}
+	
+	\bigskip
+	\textbf{Dicas práticas:}
+	\begin{itemize}
+		\item Para inserir um espaço vertical que também seja válido no início de uma nova página, use \verb|\vspace*{...}| (note o asterisco).
+		\item Para múltiplas quebras de página seguidas, prefira \verb|\clearpage| — ela garante que todas as figuras e tabelas pendentes sejam impressas antes da nova página.
+		\item Combine \verb|\vspace| e \verb|\hspace| para criar áreas em branco personalizadas em certificados, formulários ou modelos de avaliação.
+	\end{itemize}
+	
+	Esses comandos, apesar de simples, ajudam a refinar a apresentação e tornam o controle visual do documento muito mais preciso.
+	
+	
+	% =============================
+	
+	\section{Caracteres especiais}
+	
+	Alguns símbolos e caracteres têm funções específicas dentro do \LaTeX{}, e por isso não podem ser usados diretamente no texto sem causar erros de compilação. Eles são chamados de \textbf{caracteres especiais}, pois fazem parte da sintaxe do sistema.
+	
+	A tabela abaixo mostra os principais deles:
+	
+	\begin{multicols}{5}
+		\begin{itemize}
+			\item \verb|$|
+			\item \verb|#|
+			\item \verb|%|
+			\item \verb|^|
+			\item \verb|_|
+			\item \verb|{ }|
+			\item \verb|~|
+			\item \verb|\|
+			\item \verb|&|
+		\end{itemize}
+	\end{multicols}
+	
+	\bigskip
+	Esses caracteres são interpretados pelo compilador como comandos ou delimitadores, e não como texto comum.  
+	Por exemplo, o símbolo \verb|$| é usado para abrir e fechar o modo matemático, e o \verb|%| serve para inserir comentários no código.
+	
+	\bigskip
+	\textbf{Como exibir caracteres especiais no texto}
+	
+	Se quiser mostrar esses símbolos no corpo do texto, é necessário usar uma forma de “escape”, ou seja, precedê-los com uma barra invertida (\verb|\|) ou comandos específicos. Veja alguns exemplos:
+	
+
+		\begin{itemize}
+			\item \verb|\$| → exibe \$
+			\item \verb|\#| → exibe \#
+			\item \verb|\%| → exibe \%
+			\item \verb|\^{}| → exibe \^{} (acento circunflexo isolado)
+			\item \verb|\_| → exibe \_
+			\item \verb|\{| e \verb|\}| → exibem \{ e \}
+			\item \verb|\~{}| → exibe \~{} (til isolado)
+			\item \verb|\textbackslash| → exibe uma barra invertida: \textbackslash
+			\item \verb|\&| → exibe \&
+		\end{itemize}
+	
+	\bigskip
+	\textbf{Função de cada um no \LaTeX{}:}
+	
+	\begin{itemize}
+		\item \textbf{\$} — abre e fecha o modo matemático.  
+		Exemplo: \verb|$a^2 + b^2 = c^2$| → $a^2 + b^2 = c^2$.
+		
+		\item \textbf{\#} — usado para indicar parâmetros dentro de comandos e macros personalizados.
+		
+		\item \textbf{\%} — inicia um comentário. Tudo o que vem após o símbolo, até o fim da linha, é ignorado pelo compilador.
+		
+		\item \textbf{\^} e \textbf{\_} — utilizados em expressões matemáticas para sobrescritos (expoentes) e subscritos (índices), respectivamente.  
+		Exemplo: \verb|$x^2$| → $x^2$ e \verb|$a_i$| → $a_i$.
+		
+		\item \textbf{\{} e \textbf{\}} — delimitam grupos de comandos ou escopos.  
+		Exemplo: \verb|\textbf{negrito}| → \textbf{negrito}.
+		
+		\item \textbf{\~{}} — gera o caractere til. Também pode ser usado para criar um espaço inquebrável, como em \verb|João~Silva|, garantindo que o nome não seja dividido no fim da linha.
+		
+		\item \textbf{\textbackslash} — introduz comandos no \LaTeX{}, como \verb|\textbf|, \verb|\section| etc.
+		
+		\item \textbf{\&} — separa colunas dentro de tabelas e ambientes matemáticos, como \verb|tabular| ou \verb|align|.
+	\end{itemize}
+	
+	\bigskip
+	\textbf{Dica:} se precisar exibir muitos desses símbolos com frequência (por exemplo, em tutoriais de programação ou explicações sobre LaTeX), considere usar o ambiente \verb|verbatim| ou o comando \verb|\verb|, que mostram o texto exatamente como digitado — sem que o \LaTeX{} tente interpretá-lo como código.
+	
+	
+	% =============================
+	\section{Salvando como PDF}
+	
+	Depois de escrever seu documento em \LaTeX{}, o passo final é gerar o arquivo em formato \texttt{.pdf}. Esse é o formato mais usado para compartilhamento e impressão de trabalhos, artigos e relatórios. O \LaTeX{} transforma automaticamente o código-fonte (\texttt{.tex}) em um PDF formatado com alta qualidade tipográfica.
+	
+	\bigskip
+	\subsection*{Usando o Overleaf}
+	
+	Se você estiver utilizando o \textbf{Overleaf} (editor online), o processo é totalmente automático.  
+	A cada alteração feita no código, o Overleaf recompila o projeto e exibe o PDF atualizado no painel à direita.  
+	
+	\begin{itemize}
+		\item O botão \textbf{“Recompile”} (ou o atalho \texttt{Ctrl + Enter}) força uma nova compilação manual, caso o PDF não atualize automaticamente.
+		\item O arquivo PDF final pode ser baixado clicando em \textbf{“Download PDF”} no menu superior.
+		\item O Overleaf utiliza por padrão o compilador \verb|pdfLaTeX|, mas você também pode mudar para \verb|XeLaTeX| ou \verb|LuaLaTeX| nas configurações do projeto, se precisar de fontes especiais ou idiomas diferentes.
+	\end{itemize}
+	
+	\bigskip
+	\subsection*{Usando um editor local (TeXstudio, TeXworks, etc.)}
+	
+	Se preferir editar e compilar localmente no seu computador, você precisará de uma distribuição \LaTeX{} instalada — como o \textbf{TeX Live} (Linux e Windows) ou o \textbf{MiKTeX} (Windows).  
+	
+	Depois de instalada, basta abrir o seu arquivo \texttt{.tex} em um editor como o \textbf{TeXstudio} e seguir um dos métodos abaixo:
+	
+	\begin{itemize}
+		\item Clique no botão \textquotedblleft \textbf{Reproduzir} \textquotedblright (geralmente representado por um triângulo verde) para compilar e gerar o PDF automaticamente;
+		\item Ou, se preferir usar o terminal, digite:
+		\begin{verbatim}
+			pdflatex arquivo.tex
+		\end{verbatim}
+		Isso cria o arquivo \texttt{arquivo.pdf} na mesma pasta onde está o código-fonte.
+	\end{itemize}
+	
+	\bigskip
+	\textbf{Dica:} se o seu documento contém referências, sumário ou citações, é recomendável compilar duas vezes seguidas. A primeira compilação coleta as informações, e a segunda atualiza os números de páginas e referências cruzadas.
+	
+	\bigskip
+	\subsection*{Erros comuns e soluções}
+	
+	Durante a compilação, podem ocorrer erros simples, como:
+	\begin{itemize}
+		\item Arquivo de imagem não encontrado — verifique o caminho e a extensão;
+		\item Falta de um comando \verb|\end{...}| — revise se todos os ambientes estão corretamente fechados;
+	\item Problemas com acentuação — se aparecerem caracteres estranhos, mude o compilador para \verb|XeLaTeX| e adicione o pacote:
+	\begin{verbatim}
+		\usepackage[utf8]{inputenc}
+	\end{verbatim}
+	\end{itemize}
+	
+	\bigskip
+	\textbf{Resumo:}
+	\begin{itemize}
+	\item No \textbf{Overleaf}: o PDF é gerado automaticamente.
+	\item No \textbf{computador}: compile manualmente com o TeXstudio ou pelo terminal usando \verb|pdflatex|.
+	\end{itemize}
+	
+	Esses procedimentos garantem que seu documento final seja exportado com qualidade profissional, pronto para apresentação, publicação ou impressão.
+
+	
+\end{document}
