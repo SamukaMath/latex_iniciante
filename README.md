@@ -1,7 +1,7 @@
 # 📘 LaTeX_Iniciante
 
 **Autor:** Samuel Apolinário   
-**Apostila** ***LaTeX:** Guia do Iniciante*  
+**Apostila** ***LaTeX:** Guia do principiante*  
 
 ---
 
