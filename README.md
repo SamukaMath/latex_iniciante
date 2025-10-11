@@ -1,8 +1,7 @@
 # 📘 LaTeX_Iniciante
 
-**Autor:** Samuel Apolinário  
-**Especialização:** Estatística Aplicada  
-**Projeto:** Apostila *LaTeX: Guia do Iniciante*  
+**Autor:** Samuel Apolinário   
+**Apostila** ***LaTeX:** Guia do Iniciante*  
 
 ---
 
