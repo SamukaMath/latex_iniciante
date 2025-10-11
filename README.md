@@ -23,4 +23,5 @@ A apostila **"LaTeX: Guia do Iniciante"** foi elaborada para orientar o leitor d
 - Incentivar o uso do LaTeX na produção científica e educacional.
 
 Para acessar o pdf, clique nesse link abaixo
+
 [LaTeX: Guia do principiante](https://samukamath.github.io/latex_iniciante/latex_iniciante.pdf)
