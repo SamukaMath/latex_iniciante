@@ -1,3 +1,13 @@
 remote_theme: mmistakes/minimal-mistakes@latest
 plugins:
   - jekyll-feed
+
+navigation:
+  - title: "Início"
+    url: "/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "Sobre"
+    url: "/sobre/"
+  - title: "Contato"
+    url: "/contato/"
