@@ -5,9 +5,9 @@
 
 ---
 
-## 🧩 Sobre o Projeto
+## 🧩 Sobre a apostila
 
-O **LaTeX_Iniciante** é um projeto voltado à introdução do sistema **LaTeX**, com o objetivo de auxiliar estudantes, professores e pesquisadores a dominar a produção de textos científicos, técnicos e acadêmicos com qualidade tipográfica profissional.
+O **LaTeX_Iniciante** é uma apostila voltado à introdução do sistema **LaTeX**, com o objetivo de auxiliar entusiastas a dominar a produção de textos científicos, técnicos e acadêmicos com qualidade tipográfica profissional.
 
 A apostila **"LaTeX: Guia do Iniciante"** foi elaborada para orientar o leitor desde os primeiros comandos até a elaboração de documentos completos — como artigos, relatórios, trabalhos acadêmicos e materiais didáticos — utilizando uma linguagem acessível e exemplos práticos.
 
