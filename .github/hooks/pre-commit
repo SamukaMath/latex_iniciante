@@ -1,0 +1,23 @@
+#!/bin/bash
+
+VERSAO_FILE="versao.tex"
+
+# Extrai a versão atual no formato X.Y.Z
+CURRENT=$(grep -oP '\d+\.\d+\.\d+' $VERSAO_FILE)
+
+# Separa em partes
+MAJOR=$(echo $CURRENT | cut -d. -f1)
+MINOR=$(echo $CURRENT | cut -d. -f2)
+PATCH=$(echo $CURRENT | cut -d. -f3)
+
+# Incrementa apenas o PATCH
+PATCH=$((PATCH + 1))
+
+# Monta a nova versão
+NEXT="$MAJOR.$MINOR.$PATCH"
+
+# Atualiza o arquivo
+echo "\newcommand{\versao}{$NEXT}" > $VERSAO_FILE
+
+# Adiciona ao commit
+git add $VERSAO_FILE
