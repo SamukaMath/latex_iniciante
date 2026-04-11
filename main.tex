@@ -11,7 +11,6 @@
 \usepackage{csquotes}
 \usepackage[backend=biber,style=abnt]{biblatex}
 
-\DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines=true}
 
 \usepackage{titling}
 
@@ -71,7 +70,7 @@
 	
 	\paginaautor
 	
-	
+	\thispagestyle{empty}
 	\tableofcontents
 	\thispagestyle{empty}
 	
@@ -278,9 +277,9 @@
 		\begin{minipage}{.45\linewidth}
 			\begin{verbatim}
 				\begin{itemize}
-					\item Primeiro item
-					\item Segundo item
-					\item Terceiro item
+        \item Primeiro item
+        \item Segundo item
+        \item Terceiro item
 				\end{itemize}
 			\end{verbatim}
 		\end{minipage}
@@ -303,14 +302,14 @@
 			
 			\begin{verbatim}
 				\begin{itemize}
-					\item Frutas
-					\begin{itemize}
-						\item Maçã
-						\item Banana
-						\item Laranja
-					\end{itemize}
-					\item Verduras
-					\item Legumes
+        \item Frutas
+        \begin{itemize}
+            \item Maçã
+            \item Banana
+            \item Laranja
+        \end{itemize}
+        \item Verduras
+        \item Legumes
 				\end{itemize}
 			\end{verbatim}
 		\end{minipage}
@@ -359,9 +358,9 @@
 		\begin{minipage}{.45\linewidth}
 			\begin{verbatim}
 				\begin{enumerate}
-					\item Primeiro
-					\item Segundo
-					\item Terceiro
+	       \item Primeiro
+	       \item Segundo
+	       \item Terceiro
 				\end{enumerate}
 			\end{verbatim}
 		\end{minipage}
@@ -384,12 +383,12 @@
 		\begin{minipage}{.45\linewidth}
 			\begin{verbatim}
 				\begin{enumerate}
-					\item Etapa 1
-					\begin{enumerate}
-						\item Subetapa 1.1
-						\item Subetapa 1.2
-					\end{enumerate}
-					\item Etapa 2
+			     \item Etapa 1
+			     \begin{enumerate}
+			         \item Subetapa 1.1
+			         \item Subetapa 1.2
+			     \end{enumerate}
+			     \item Etapa 2
 				\end{enumerate}
 			\end{verbatim}
 		\end{minipage}
@@ -605,9 +604,9 @@
 	
 	\begin{verbatim}
 		\begin{figure}[h]
-			\centering
-			\includegraphics[width=0.5\textwidth]{exemplo.jpg}
-			\caption{Minha imagem}
+    \centering
+    \includegraphics[width=0.5\textwidth]{exemplo.jpg}
+    \caption{Minha imagem}
 		\end{figure}
 	\end{verbatim}
 	
@@ -651,10 +650,10 @@
 		\begin{document}
 			
 			\begin{figure}[h]
-				\centering
-				\includegraphics[width=0.6\textwidth]{paisagem.png}
-				\caption{Vista panorâmica da montanha}
-				\label{fig:montanha}
+	    \centering
+	    \includegraphics[width=0.6\textwidth]{paisagem.png}
+	    \caption{Vista panorâmica da montanha}
+	    \label{fig:montanha}
 			\end{figure}
 			
 			A Figura~\ref{fig:montanha} mostra uma bela vista das montanhas 
@@ -813,8 +812,8 @@
 			2) Resolva o sistema:
 			\[
 			\begin{cases}
-				3x + y = 7 \\
-				x - y = 1
+		    3x + y = 7 \\
+		    x - y = 1
 			\end{cases}
 			\]
 		\end{verbatim}
@@ -840,15 +839,16 @@
 			\section*{Questões}
 			
 			\begin{enumerate}
-				\item Resolva a equação $3x + 7 = 16$.
+        \item Resolva a equação $3x + 7 = 16$.
 				
-				\item Calcule a área de um triângulo de base $b = 8\,cm$ e altura $h = 5\,cm$.
+        \item Calcule a área de um triângulo de base $b = 8\,cm$ e altura 
+        $h = 5\,cm$.
 				
 				\item Resolva o sistema:
 				\[
 				\begin{cases}
-					2x + y = 10 \\
-					x - y = 4
+				    2x + y = 10 \\
+				    x - y = 4
 				\end{cases}
 				\]
 				
@@ -1092,7 +1092,8 @@
     \end{verbatim}
     
     \begin{verbatim}
-    Estudos recentes apontam mudanças significativas na economia digital \parencite{pereira2024}.
+    Estudos recentes apontam mudanças significativas na economia digital
+    \parencite{pereira2024}.
     \end{verbatim}
     
     \begin{verbatim}
