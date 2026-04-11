@@ -1,4 +1,5 @@
 \documentclass[12pt,a4paper]{article}
+
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, enumitem, float, booktabs, multicol, indentfirst}
@@ -7,12 +8,12 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{geometry, chngpage}
-\usepackage{fvextra}
 \usepackage{csquotes}
 \usepackage[backend=biber,style=abnt]{biblatex}
-
-
 \usepackage{titling}
+
+
+\setlength{\headheight}{14.49998pt}
 
 \geometry{left=3cm,right=2cm,top=3cm,bottom=2cm}
 
@@ -939,21 +940,19 @@
 	
 	Alguns símbolos e caracteres têm funções específicas dentro do \LaTeX{}, e por isso não podem ser usados diretamente no texto sem causar erros de compilação. Eles são chamados de \textbf{caracteres especiais}, pois fazem parte da sintaxe do sistema.
 	
-	A tabela abaixo mostra os principais deles:
-	
-	\begin{multicols}{5}
-		\begin{itemize}
-			\item \verb|$|
-			\item \verb|#|
-			\item \verb|%|
-			\item \verb|^|
-			\item \verb|_|
-			\item \verb|{ }|
-			\item \verb|~|
-			\item \verb|\|
-			\item \verb|&|
-		\end{itemize}
-	\end{multicols}
+	A lista abaixo mostra os principais deles:
+    
+	\begin{itemize}
+		\item \verb|$|
+		\item \verb|#|
+		\item \verb|%|
+		\item \verb|^|
+		\item \verb|_|
+		\item \verb|{ }|
+		\item \verb|~|
+		\item \verb|\|
+		\item \verb|&|
+	\end{itemize}
 	
 	\bigskip
 	Esses caracteres são interpretados pelo compilador como comandos ou delimitadores, e não como texto comum.  
