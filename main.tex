@@ -7,6 +7,11 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{geometry, chngpage}
+\usepackage{fvextra}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=abnt]{biblatex}
+
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines=true}
 
 \usepackage{titling}
 
@@ -44,8 +49,8 @@
 		
 		{\Large \textbf{Autor}}\\[1cm]
 		\textbf{Samuel de Sousa Apolinário}\\[0.3cm]
-		Licenciado em Matemática - UNEAL\\
-		Especialista em Estatística Aplicada - FFOCUS\\[0.5cm]
+		Licenciado em Matemática - \textbf{UNEAL}\\
+		Especialista em Estatística Aplicada e em \\ Matemática Orientada a Computação Gráfica - \textbf{FFOCUS}\\[0.5cm]
 		Contato: samukamath@outlook.com
 	\end{flushright}
 	\newpage
@@ -998,8 +1003,146 @@
 	
 	\bigskip
 	\textbf{Dica:} se precisar exibir muitos desses símbolos com frequência (por exemplo, em tutoriais de programação ou explicações sobre LaTeX), considere usar o ambiente \verb|verbatim| ou o comando \verb|\verb|, que mostram o texto exatamente como digitado — sem que o \LaTeX{} tente interpretá-lo como código.
-	
-	
+	% =============================
+
+    \section{Referências Bibliográficas}
+
+    A criação de referências bibliográficas no \LaTeX{} segue um processo simples e organizado. 
+    O método mais recomendado é utilizar um arquivo externo no formato \texttt{.bib}, que contém todas as referências do trabalho. 
+    
+    Esse arquivo é lido automaticamente pelo compilador, permitindo que as citações e a lista final de referências sejam geradas de forma padronizada.
+
+    O primeiro passo consiste em criar um arquivo chamado \texttt{referencias.bib}. Esse arquivo deve ser salvo na mesma pasta do seu projeto \LaTeX{}. 
+    
+    Cada referência é escrita em um formato específico, chamado \textit{BibTeX}. A seguir, apresentamos alguns exemplos de entradas comuns.
+
+
+    \subsubsection*{Exemplo de livro}
+
+    \begin{verbatim}
+    @book{silva2023,
+      author    = {Silva, Carlos Alberto},
+      title     = {Tendências da sociologia contemporânea},
+      address   = {São Paulo},
+      publisher = {Editora Unesp},
+      year      = {2023},
+    }
+    \end{verbatim}
+
+    \subsubsection*{Exemplo de artigo científico}
+    
+    \begin{verbatim}
+    @article{pereira2024,
+      author  = {Pereira, João},
+      title   = {Análise crítica da economia digital},
+      journal = {Revista Brasileira de Economia},
+      volume  = {12},
+      number  = {2},
+      pages   = {45--67},
+      year    = {2024},
+    }
+    \end{verbatim}
+
+    \subsubsection*{Exemplo de documento online}
+    
+    \begin{verbatim}
+    @misc{mendes2025,
+      author       = {Mendes, Fernanda Lima},
+      title        = {Relatório de pesquisa em sociologia},
+      howpublished = {E-book},
+      year         = {2025},
+      url          = {http://exemplo.com/relatorio.pdf},
+      note         = {Acesso em: 15 mar. 2025},
+    }
+    \end{verbatim}
+
+    \subsection{Configurando o estilo ABNT com o biblatex}
+
+    No preâmbulo do documento, carregue o pacote \texttt{biblatex} com o estilo ABNT:
+
+    \begin{verbatim}
+    \usepackage[
+        backend=bibtex,
+        style=abnt,
+        language=brazil
+    ]{biblatex}
+    
+    \addbibresource{referencias.bib}
+    \end{verbatim}
+
+    \subsection{Sobre a escolha do backend}
+
+    O pacote \texttt{biblatex} pode utilizar dois programas diferentes para processar o arquivo de
+    referências: \texttt{bibtex} ou \texttt{biber}. O backend recomendado pelos desenvolvedores do
+    \texttt{biblatex} é o \texttt{biber}, pois ele oferece suporte completo aos recursos modernos do
+    pacote e maior compatibilidade com estilos avançados, incluindo o estilo ABNT.
+    
+    No entanto, o backend \texttt{bibtex} também pode ser utilizado e funciona corretamente na maioria
+    dos casos, sendo uma opção prática para iniciantes ou para quem utiliza o Overleaf com o compilador
+    \texttt{pdfLaTeX}.
+    
+    A linha \texttt{\textbackslash addbibresource} informa ao \LaTeX{} qual arquivo \texttt{.bib} será usado
+
+    \subsection{Citando autores no texto}
+    
+    O \texttt{biblatex} oferece diversos comandos de citação. Os mais usados são:
+    
+    \begin{verbatim}
+    Segundo \textcite{silva2023}, a sociologia contemporânea...
+    \end{verbatim}
+    
+    \begin{verbatim}
+    Estudos recentes apontam mudanças significativas na economia digital \parencite{pereira2024}.
+    \end{verbatim}
+    
+    \begin{verbatim}
+    Pesquisas recentes discutem o tema \cite{mendes2025}.
+    \end{verbatim}
+    
+    Os comandos mais comuns são:
+    
+    \begin{itemize}
+        \item \texttt{\textbackslash cite} — citação simples.
+        \item \texttt{\textbackslash textcite} — autor aparece no texto.
+        \item \texttt{\textbackslash apud{}{}} - citação apud.
+        \item \texttt{\textbackslash cites} - citação de mais de um autor em maiúsculo e entre 
+        parênteses.
+        \item \texttt{\textbackslash textcites} - autores aparecem no texto.
+        
+    \end{itemize}
+
+    \subsection{ Gerando a lista de referências}
+    
+    Ao final do documento, inclua:
+    
+    \begin{verbatim}
+    \printbibliography[title={Referências}]
+    \end{verbatim}
+    
+    O título pode ser alterado conforme a necessidade.
+    
+    Quando utilizamos o pacote \texttt{biblatex} com o estilo \texttt{abnt}, é necessário que o
+    documento seja compilado com o programa \texttt{biber}, responsável por processar o arquivo
+    \texttt{.bib}. Em uma instalação local do \LaTeX{}, seria preciso executar manualmente a sequência:
+    
+    \begin{verbatim}
+    pdflatex → biber → pdflatex → pdflatex
+    \end{verbatim}
+    
+    No entanto, ao utilizar o Overleaf, esse processo é realizado automaticamente. Basta garantir que o
+    projeto esteja configurado para usar o compilador \texttt{PdfLaTeX (Bibtex)}. Para isso:
+    
+    \begin{enumerate}
+        \item Clique em \textbf{Menu} no canto superior esquerdo.
+        \item Localize a opção \textbf{Compiler}.
+        \item Selecione \textbf{PdfLaTeX}.
+    \end{enumerate}
+    
+    Após essa configuração, o Overleaf executará todas as etapas necessárias para gerar as referências
+    bibliográficas no estilo ABNT, sem que o usuário precise se preocupar com comandos adicionais.
+    
+    Essa sequência garante que o arquivo \texttt{.bib} seja processado e que as referências apareçam
+    corretamente formatadas no estilo ABNT.
 	% =============================
 	\section{Salvando como PDF}
 	
@@ -1044,9 +1187,11 @@
 		\item Arquivo de imagem não encontrado — verifique o caminho e a extensão;
 		\item Falta de um comando \verb|\end{...}| — revise se todos os ambientes estão corretamente fechados;
 	\item Problemas com acentuação — se aparecerem caracteres estranhos, mude o compilador para \verb|XeLaTeX| e adicione o pacote:
+    
 	\begin{verbatim}
 		\usepackage[utf8]{inputenc}
 	\end{verbatim}
+    
 	\end{itemize}
 	
 	\bigskip
