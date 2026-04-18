@@ -2,8 +2,8 @@
 
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, enumitem, float, booktabs, multicol, indentfirst}
-\usepackage{newtxtext, newtxmath}
+\usepackage{amsmath, amssymb, enumitem, float, booktabs, multicol, indentfirst, xcolor}
+
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
@@ -11,7 +11,7 @@
 \usepackage{csquotes}
 \usepackage[backend=biber,style=abnt]{biblatex}
 \usepackage{titling}
-
+\usepackage{newtxtext, newtxmath}
 
 \setlength{\headheight}{14.49998pt}
 
@@ -40,7 +40,7 @@
 
 \title{\LaTeX: Guia do Iniciante}
 \author{Prof. Esp. Samuel de Sousa Apolinário}
-\date{Outubro de 2025}
+\date{@academia\_latex}
 
 \newcommand{\paginaautor}{
 	\newpage
@@ -148,10 +148,11 @@
 	Vamos escrever nosso primeiro código:
 	
 	\begin{verbatim}
-		\documentclass{article}
-		\begin{document}
-			Olá, mundo!
-		\end{document}
+\documentclass{article}
+
+\begin{document}
+    Olá, mundo!
+\end{document}
 	\end{verbatim}
 	
 	\textbf{Explicação:}
@@ -170,15 +171,16 @@
 	
 	\begin{itemize}
 		
-		\item Todo documento em \LaTeX precisa ter uma classe definida (\verb|\documentclass|), que indica o formato e estilo geral do arquivo.
+		\item Todo documento em \LaTeX \,precisa ter uma classe definida (\verb|\documentclass|), que indica o formato e estilo geral do arquivo.
 		
 		\item O conteúdo visível sempre deve estar entre \verb|\begin{document}| e \verb|\end{document}|. Qualquer texto colocado fora dessas linhas não aparecerá no documento final.
 		
-		\item Esse exemplo é chamado de documento mínimo ou exemplo inicial, útil para compreender a organização básica de um arquivo \LaTeX antes de adicionar elementos mais complexos, como títulos, listas ou imagens.
+		\item O exemplo a seguir é chamado de documento mínimo ou exemplo inicial, útil para compreender a organização básica de um arquivo \LaTeX \,antes de adicionar elementos mais complexos, como títulos, listas ou imagens.
+
 		
 	\end{itemize}
 	
-	Dica: experimente alterar o texto “Olá, mundo!” para ver como o \LaTeX reproduz o conteúdo que você escreve, mantendo a formatação automática do documento.
+	Dica: experimente alterar o texto “Olá, mundo!” para ver como o \LaTeX \,reproduz o conteúdo que você escreve, mantendo a formatação automática do documento.
 	% =============================
 	\section{Formatando Textos}
 	
@@ -194,9 +196,11 @@
 	
 	\begin{itemize}
 		\item Para pular linhas dentro de um mesmo parágrafo, utilize o comando \verb|\\|.  
-		\textbf{Exemplo:}  
+		
+        \textbf{Exemplo:}  
 		\verb|Primeira linha.\\Segunda linha.| produz:  
-		Primeira linha.\\Segunda linha.
+		  
+        Primeira linha. \\ Segunda linha.
 		\item Para iniciar um novo parágrafo, basta deixar uma linha em branco no código. O \LaTeX{} automaticamente adiciona o espaçamento adequado entre parágrafos.
 	\end{itemize}
 	
@@ -334,12 +338,12 @@
 	
 	Também é possível personalizar os símbolos das listas com o pacote \verb|enumitem|, por exemplo:
 	\begin{verbatim}
-		\usepackage{enumitem}
-		
-		\begin{itemize}[label=--]
-			\item Item com traço
-			\item Outro item
-		\end{itemize}
+\usepackage{enumitem}
+
+\begin{itemize}[label=--]
+    \item Item com traço
+    \item Outro item
+\end{itemize}
 	\end{verbatim}
 	
 	Isso substitui as bolinhas por traços, o que pode deixar o visual mais limpo em apresentações ou relatórios.
@@ -413,8 +417,8 @@
 		\usepackage{enumitem}
 		
 		\begin{enumerate}[label=\alph*)]
-			\item Primeira opção
-			\item Segunda opção
+		      \item Primeira opção
+		      \item Segunda opção
 		\end{enumerate}
 	\end{verbatim}
 	
@@ -442,6 +446,7 @@
 		\title{Meu Documento}
 		\author{Nome do Autor}
 		\date{Data}
+        
 		\maketitle
 		\tableofcontents
 		\section{Introdução}
@@ -1111,7 +1116,7 @@
         
     \end{itemize}
 
-    \subsection{ Gerando a lista de referências}
+    \subsection{Gerando a lista de referências}
     
     Ao final do documento, inclua:
     
